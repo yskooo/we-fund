@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeFund - You Trade, We Fund</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #0a0a0f;
+        background-image: 
+          radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.08) 0%, transparent 50%);
+        color: #f8fafc;
+        line-height: 1.7;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+      }
+
+      /* Header and Footer Styles */
+      .header,
+      .footer {
+        color: #f8fafc;
+        padding: 1.5rem 1.5rem;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+      }
+
+      .header-container,
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .header-logo {
+        font-family: "Orbitron", monospace;
+        font-size: 1.75rem;
+        font-weight: 800;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .header-nav {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .header-nav-link {
+        color: #cbd5e1;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .header-nav-link:hover {
+        color: #93c5fd;
+      }
+
+      .footer {
+        border-top: 1px solid #1f2937;
+        border-bottom: none;
+        margin-top: 4rem;
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+      }
+
+      .footer-container {
+        display: block;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .footer-about {
+        color: #cbd5e1;
+        font-size: 0.9rem;
+        max-width: 300px;
+      }
+
+      .footer-links-list {
+        list-style: none;
+      }
+
+      .footer-links-list h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .footer-links-list li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-link {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-link:hover {
+        color: #f8fafc;
+      }
+
+      .footer-copyright {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #1f2937;
+        font-size: 0.875rem;
+        color: #94a3b8;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #0a0a0f;
+        padding: 120px 0;
+      }
+
+      .hero-particles {
+        position: absolute;
+        inset: 0;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      .particle-1 {
+        top: 80px;
+        left: 80px;
+        width: 8px;
+        height: 8px;
+        background-color: #22d3ee;
+      }
+      .particle-2 {
+        top: 160px;
+        right: 128px;
+        width: 4px;
+        height: 4px;
+        background-color: #60a5fa;
+        animation-delay: 0.3s;
+      }
+      .particle-3 {
+        bottom: 128px;
+        left: 160px;
+        width: 6px;
+        height: 6px;
+        background-color: #67e8f9;
+        animation-delay: 0.7s;
+      }
+      .particle-4 {
+        top: 240px;
+        left: 33%;
+        width: 4px;
+        height: 4px;
+        background-color: #93c5fd;
+        animation-delay: 1s;
+      }
+      .particle-5 {
+        bottom: 160px;
+        right: 80px;
+        width: 8px;
+        height: 8px;
+        background-color: #06b6d4;
+        animation-delay: 0.5s;
+      }
+      .particle-6 {
+        top: 128px;
+        right: 25%;
+        width: 4px;
+        height: 4px;
+        background-color: #3b82f6;
+        animation-delay: 0.2s;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero-gradient-orb {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 384px;
+        height: 384px;
+        background: linear-gradient(
+          to left,
+          rgba(34, 211, 238, 0.2),
+          rgba(37, 99, 235, 0.2)
+        );
+        border-radius: 50%;
+        filter: blur(48px);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      .hero-title {
+        font-family: "Orbitron", monospace;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        color: white;
+        margin-bottom: 32px;
+        text-wrap: balance;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ffffff 0%, #00d4ff 30%, #7c3aed 70%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: gradientShift 4s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .hero-subtitle {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: #e2e8f0;
+        margin-bottom: 48px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-wrap: balance;
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        line-height: 1.6;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-stars {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+
+      .stars {
+        display: flex;
+      }
+
+      .star {
+        width: 20px;
+        height: 20px;
+        fill: #facc15;
+        color: #facc15;
+      }
+
+      .hero-button {
+        background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #ff1744 100%);
+        color: white;
+        padding: 20px 48px;
+        font-family: "Orbitron", monospace;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+          0 8px 32px rgba(0, 212, 255, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .hero-button:hover::before {
+        left: 100%;
+      }
+
+      .hero-button:hover {
+        background: linear-gradient(135deg, #0891b2 0%, #5b21b6 50%, #dc2626 100%);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+          0 16px 48px rgba(0, 212, 255, 0.4),
+          0 0 0 1px rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-button:active {
+        transform: translateY(-1px) scale(0.98);
+      }
+
+      /* Trust Bar Section */
+      .trust-section {
+        padding: 64px 0;
+        background-color: rgba(15, 23, 42, 0.5);
+        border-top: 1px solid #334155;
+        border-bottom: 1px solid #334155;
+      }
+
+      .trust-container {
+        max-width: 1152px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .trust-stat {
+        text-align: center;
+      }
+
+      .trust-value {
+        font-family: "Orbitron", monospace;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        color: white;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.05em;
+        line-height: 1;
+      }
+
+      .trust-label {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(180deg, #020617, #020617 100%);
+      }
+
+      .pricing-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .pricing-title {
+        font-family: "Orbitron", monospace;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.1;
+      }
+
+      .pricing-subtitle {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        color: #cbd5e1;
+        margin-bottom: 4rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        line-height: 1.6;
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        margin-bottom: 4rem;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 1rem;
+      }
+
+      .pricing-card {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(0, 212, 255, 0.08) 30%,
+          rgba(124, 58, 237, 0.05) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 3.5rem 2.5rem;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        backdrop-filter: blur(20px);
+        box-shadow: 
+          0 8px 32px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        border-color: rgba(0, 212, 255, 0.6);
+        box-shadow: 
+          0 25px 80px rgba(0, 212, 255, 0.2),
+          0 0 0 1px rgba(255, 255, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      .pricing-card.featured {
+        border-color: rgba(0, 212, 255, 0.5);
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.05) 0%,
+          rgba(124, 58, 237, 0.05) 100%
+        );
+      }
+
+      .pricing-card.featured::before {
+        content: "MOST POPULAR";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+        color: #ffffff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .card-header {
+        margin-bottom: 2rem;
+      }
+
+      .card-title {
+        font-family: "Orbitron", monospace;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .card-price {
+        font-family: "Orbitron", monospace;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #00d4ff;
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.02em;
+        line-height: 1;
+      }
+
+      .card-period {
+        color: #94a3b8;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: "Inter", sans-serif;
+      }
+
+      .card-features {
+        list-style: none;
+        margin-bottom: 3rem;
+        text-align: left;
+      }
+
+      .card-features li {
+        padding: 1rem 0;
+        color: #cbd5e1;
+        position: relative;
+        padding-left: 2rem;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .card-features li:last-child {
+        border-bottom: none;
+      }
+
+      .card-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 1rem;
+        color: #00d4ff;
+        font-weight: 900;
+        font-size: 1.1rem;
+        text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+      }
+
+      .card-features li:hover {
+        color: #ffffff;
+        padding-left: 2.2rem;
+      }
+
+      .card-cta {
+        width: 100%;
+        background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #ff1744 100%);
+        color: #ffffff;
+        border: none;
+        padding: 1.2rem 2rem;
+        border-radius: 50px;
+        font-family: "Orbitron", monospace;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+          0 8px 32px rgba(0, 212, 255, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .card-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .card-cta:hover::before {
+        left: 100%;
+      }
+
+      .card-cta:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+          0 16px 48px rgba(0, 212, 255, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .featured .card-cta {
+        background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
+      }
+
+      /* Webhook Section */
+      .webhook-section {
+        padding: 120px 0;
+        background: linear-gradient(180deg, 
+          rgba(15, 23, 42, 0.4) 0%, 
+          rgba(30, 41, 59, 0.2) 50%, 
+          rgba(15, 23, 42, 0.4) 100%);
+        position: relative;
+      }
+
+      .webhook-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+      }
+
+      .webhook-container {
+        max-width: 896px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .webhook-header {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .webhook-title {
+        font-family: "Orbitron", monospace;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: white;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .webhook-subtitle {
+        color: #cbd5e1;
+        font-size: 1.125rem;
+      }
+
+      .webhook-controls {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .webhook-button {
+        background: linear-gradient(to right, #06b6d4, #2563eb);
+        color: white;
+        font-weight: 600;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .webhook-button:hover:not(:disabled) {
+        background: linear-gradient(to right, #0891b2, #1d4ed8);
+      }
+
+      .webhook-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .webhook-button.secondary {
+        background: rgba(71, 85, 105, 0.8);
+      }
+
+      .webhook-button.secondary:hover:not(:disabled) {
+        background: rgba(71, 85, 105, 1);
+      }
+
+      .webhook-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .spin {
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .webhook-card {
+        background: linear-gradient(
+          145deg,
+          rgba(15, 23, 42, 0.9) 0%,
+          rgba(30, 41, 59, 0.8) 50%,
+          rgba(15, 23, 42, 0.9) 100%
+        );
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: 24px;
+        padding: 32px;
+        display: none;
+        animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+          0 16px 48px rgba(0, 0, 0, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      .webhook-card.show {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .order-summary {
+        background-color: rgba(30, 41, 59, 0.5);
+        border-radius: 8px;
+        padding: 16px;
+        border: 1px solid #334155;
+        margin-bottom: 16px;
+      }
+
+      .order-summary h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 12px;
+      }
+
+      .order-info {
+        font-size: 1.3rem;
+        font-family: "Orbitron", monospace;
+        color: #00d4ff;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+      }
+
+      .webhook-details {
+        display: grid;
+        gap: 24px;
+      }
+
+      .detail-section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .detail-section h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.875rem;
+      }
+
+      .detail-label {
+        color: #94a3b8;
+      }
+
+      .detail-value {
+        color: white;
+      }
+
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border: 1px solid;
+      }
+
+      .status-processing {
+        background-color: rgba(234, 179, 8, 0.2);
+        color: #facc15;
+        border-color: rgba(234, 179, 8, 0.3);
+      }
+
+      .status-completed {
+        background-color: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+
+      .status-failed {
+        background-color: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      .raw-data {
+        background-color: rgba(30, 41, 59, 0.3);
+        border-radius: 8px;
+        border: 1px solid #334155;
+        margin-top: 16px;
+      }
+
+      .raw-data summary {
+        padding: 16px;
+        cursor: pointer;
+        color: #cbd5e1;
+        transition: color 0.3s ease;
+      }
+
+      .raw-data summary:hover {
+        color: white;
+      }
+
+      .raw-data pre {
+        font-size: 0.75rem;
+        color: #cbd5e1;
+        overflow-x: auto;
+        background-color: rgba(2, 6, 23, 0.5);
+        padding: 12px;
+        margin: 0 16px 16px;
+        border-radius: 4px;
+        border: 1px solid #334155;
+      }
+
+      .api-status {
+        padding: 8px 16px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        font-size: 0.875rem;
+        text-align: center;
+      }
+
+      .api-status.online {
+        background-color: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #22c55e;
+      }
+
+      .api-status.offline {
+        background-color: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-logo,
+        .footer-about,
+        .footer-links-list h4,
+        .footer-links-list li {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .footer-links-list li {
+          text-align: center;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero-title {
+          font-size: 4.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.5rem;
+        }
+
+        .trust-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .trust-value {
+          font-size: 2.5rem;
+        }
+
+        .trust-label {
+          font-size: 1rem;
+        }
+
+        .pricing-title {
+          font-size: 3rem;
+        }
+
+        .webhook-details {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .webhook-title {
+          font-size: 2.5rem;
+        }
+
+        .header-container {
+          flex-wrap: nowrap;
+        }
+
+        .header-nav {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <a href="#" class="header-logo">WeFund</a>
+        <nav class="header-nav">
+          <a href="#" class="header-nav-link">Home</a>
+          <a href="#pricing" class="header-nav-link">Pricing</a>
+          <a href="#" class="header-nav-link">About Us</a>
+          <a href="#" class="header-nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero-section">
+      <div class="hero-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+      </div>
+
+      <div class="hero-gradient-orb"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">You Trade, We Fund</h1>
+
+        <p class="hero-subtitle">
+          Unlock your trading potential with up to $2M in capital. Join 25,000+ funded traders who've already transformed their careers with WeFund's transparent, performance-based funding program.
+        </p>
+
+        <div class="hero-stars">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+          </div>
+          <span style="color: #cbd5e1; margin-left: 8px">4.8 stars</span>
+        </div>
+
+        <a href="#pricing" class="hero-button">Start Your Challenge</a>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <div class="trust-container">
+        <div class="trust-grid">
+          <div class="trust-stat">
+            <div class="trust-value">$50M+</div>
+            <div class="trust-label">Funded to Traders</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-value">25K+</div>
+            <div class="trust-label">Active Traders</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-value">150+</div>
+            <div class="trust-label">Countries Served</div>
+          </div>
+          <div class="trust-stat">
+            <div class="trust-value">4.8/5</div>
+            <div class="trust-label">Trust Score</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-content fade-in">
+        <h2 class="pricing-title">Prove Your Edge</h2>
+        <p class="pricing-subtitle">
+          Select your challenge level and join thousands of profitable traders. Our transparent evaluation process and industry-leading profit splits make WeFund the smart choice for serious traders.
+        </p>
+
+        <div class="pricing-cards">
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3 class="card-title">Starter Challenge</h3>
+              <div class="card-price">$89</div>
+              <div class="card-period">$10K Account</div>
+            </div>
+            <ul class="card-features">
+              <li>10% Profit Target (Step 1)</li>
+              <li>5% Profit Target (Step 2)</li>
+              <li>5% Max Daily Loss</li>
+              <li>80% Profit Share</li>
+              <li>MetaTrader 5 Platform</li>
+            </ul>
+            <button class="card-cta">Begin Challenge</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="card-header">
+              <h3 class="card-title">WeFund 25K Challenge</h3>
+              <div class="card-price">$297</div>
+              <div class="card-period">$25K Account</div>
+            </div>
+            <ul class="card-features">
+              <li>10% Profit Target (Step 1)</li>
+              <li>5% Profit Target (Step 2)</li>
+              <li>5% Max Daily Loss</li>
+              <li>85% Profit Share</li>
+              <li>A-Book Scaling Plan</li>
+              <li>Custom Dashboard</li>
+            </ul>
+            <button class="card-cta">Claim Your Spot</button>
+          </div>
+
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3 class="card-title">Pro Challenge</h3>
+              <div class="card-price">$599</div>
+              <div class="card-period">$100K Account</div>
+            </div>
+            <ul class="card-features">
+              <li>10% Profit Target (Step 1)</li>
+              <li>5% Profit Target (Step 2)</li>
+              <li>5% Max Daily Loss</li>
+              <li>90% Profit Share</li>
+              <li>Scale up to $2M</li>
+              <li>Priority Support</li>
+            </ul>
+            <button class="card-cta">Elite Access</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="webhook-section">
+      <div class="webhook-container">
+        <div class="webhook-header">
+          <h2 class="webhook-title">Live Order Processing</h2>
+          <p class="webhook-subtitle">
+            Real-time WooCommerce webhook integration demo
+          </p>
+        </div>
+
+        <div id="apiStatus" class="api-status offline">
+          🔴 API Status: Checking connection...
+        </div>
+
+        <div class="webhook-controls">
+          <button id="simulateButton" class="webhook-button">
+            <svg class="webhook-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15,3 21,3 21,9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>Simulate Order</span>
+          </button>
+          
+          <button id="refreshButton" class="webhook-button secondary">
+            <svg class="webhook-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64l1.27 1.27m.01 6.18A9 9 0 0 0 18.36 18.36l-1.27-1.27"></path>
+            </svg>
+            <span>Refresh Latest</span>
+          </button>
+        </div>
+
+        <div id="webhookCard" class="webhook-card">
+          <div class="order-summary">
+            <h3>Latest Order</h3>
+            <div id="orderInfo" class="order-info">No orders received yet</div>
+          </div>
+
+          <div class="webhook-details">
+            <div class="detail-section">
+              <h4>Order Details</h4>
+              <div id="orderDetails"></div>
+            </div>
+
+            <div class="detail-section">
+              <h4>Customer & Product</h4>
+              <div id="customerDetails"></div>
+            </div>
+          </div>
+
+          <details class="raw-data">
+            <summary>View Raw Webhook Data</summary>
+            <pre id="rawJson">No data available</pre>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">WeFund</div>
+            <p class="footer-about">
+              Empowering traders worldwide with the capital and tools they need
+              to succeed.
+            </p>
+          </div>
+          <div>
+            <ul class="footer-links-list">
+              <h4>Company</h4>
+              <li><a href="#" class="footer-link">About Us</a></li>
+              <li><a href="#" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">Partners</a></li>
+              <li><a href="#" class="footer-link">Press</a></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="footer-links-list">
+              <h4>Products</h4>
+              <li><a href="#pricing" class="footer-link">Pricing</a></li>
+              <li><a href="#" class="footer-link">Dashboard</a></li>
+              <li><a href="#" class="footer-link">Affiliate Program</a></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="footer-links-list">
+              <h4>Support</h4>
+              <li><a href="#" class="footer-link">Contact</a></li>
+              <li><a href="#" class="footer-link">FAQs</a></li>
+              <li><a href="#" class="footer-link">Help Center</a></li>
+              <li><a href="#" class="footer-link">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-copyright">© 2024 WeFund. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE = window.location.origin;
+      
+      // API Status Check
+      async function checkApiStatus() {
+        const statusEl = document.getElementById('apiStatus');
+        try {
+          const response = await fetch(`${API_BASE}/api/health`);
+          if (response.ok) {
+            const data = await response.json();
+            statusEl.className = 'api-status online';
+            statusEl.innerHTML = `🟢 API Status: ${data.status} - ${data.service}`;
+          } else {
+            throw new Error('API not responding');
+          }
+        } catch (error) {
+          statusEl.className = 'api-status offline';
+          statusEl.innerHTML = '🔴 API Status: Offline (using demo mode)';
+        }
+      }
+
+      // Simulate webhook by calling the test endpoint
+      async function simulateWebhook() {
+        const button = document.getElementById('simulateButton');
+        const originalContent = button.innerHTML;
+        
+        // Show loading state
+        button.disabled = true;
+        button.innerHTML = `
+          <svg class="webhook-icon spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 11-6.219-8.56"/>
+          </svg>
+          <span>Sending Order...</span>
+        `;
+
+        try {
+          const response = await fetch(`${API_BASE}/api/test/simulate-webhook`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Wait a moment for the webhook to process
+            setTimeout(async () => {
+              await fetchLatestWebhook();
+              button.disabled = false;
+              button.innerHTML = originalContent;
+            }, 1500);
+          } else {
+            throw new Error('Failed to simulate webhook');
+          }
+        } catch (error) {
+          console.error('Error simulating webhook:', error);
+          // Fallback to demo data
+          displayWebhookData(getDemoData());
+          button.disabled = false;
+          button.innerHTML = originalContent;
+        }
+      }
+
+      // Fetch latest webhook from API
+      async function fetchLatestWebhook() {
+        try {
+          const response = await fetch(`${API_BASE}/api/webhooks/latest`);
+          if (response.ok) {
+            const data = await response.json();
+            displayWebhookData(data.webhook);
+          } else if (response.status === 404) {
+            // No webhooks yet, show demo data
+            displayWebhookData(getDemoData());
+          }
+        } catch (error) {
+          console.error('Error fetching latest webhook:', error);
+          displayWebhookData(getDemoData());
+        }
+      }
+
+      // Demo data fallback
+      function getDemoData() {
+        return {
+          id: Math.floor(Math.random() * 10000),
+          status: "processing",
+          total: "297.00",
+          currency: "USD",
+          transaction_id: `txn_${Date.now()}`,
+          payment_method: "paytiko_test",
+          date_created: new Date().toISOString(),
+          customer: {
+            name: "John Doe",
+            email: "john.doe@email.com",
+            country: "PH"
+          },
+          product: {
+            name: "WeFund 25K Challenge",
+            quantity: 1
+          },
+          raw_data: {
+            id: Math.floor(Math.random() * 10000),
+            status: "processing",
+            currency: "USD",
+            total: "297.00"
+          }
+        };
+      }
+
+      // Display webhook data in the UI
+      function displayWebhookData(data) {
+        const webhookCard = document.getElementById('webhookCard');
+        const orderInfo = document.getElementById('orderInfo');
+        const orderDetails = document.getElementById('orderDetails');
+        const customerDetails = document.getElementById('customerDetails');
+        const rawJson = document.getElementById('rawJson');
+
+        // Show order summary
+        orderInfo.textContent = `#${data.id} – ${data.currency} ${data.total} – ${data.status} – ${data.transaction_id}`;
+
+        // Order details
+        orderDetails.innerHTML = `
+          <div class="detail-row">
+            <span class="detail-label">Order ID:</span>
+            <span class="detail-value">#${data.id}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Status:</span>
+            <span class="status-badge status-${data.status}">${data.status}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Total:</span>
+            <span class="detail-value">${data.currency} ${data.total}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Payment Method:</span>
+            <span class="detail-value">${data.payment_method || 'N/A'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Transaction ID:</span>
+            <span class="detail-value" style="font-family: monospace; font-size: 0.75rem;">${data.transaction_id}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date:</span>
+            <span class="detail-value">${new Date(data.date_created).toLocaleDateString()}</span>
+          </div>
+        `;
+
+        // Customer details
+        customerDetails.innerHTML = `
+          <div class="detail-row">
+            <span class="detail-label">Customer:</span>
+            <span class="detail-value">${data.customer?.name || 'N/A'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value" style="font-size: 0.75rem;">${data.customer?.email || 'N/A'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Country:</span>
+            <span class="detail-value">${data.customer?.country || 'N/A'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Product:</span>
+            <span class="detail-value">${data.product?.name || 'N/A'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Quantity:</span>
+            <span class="detail-value">${data.product?.quantity || 'N/A'}</span>
+          </div>
+        `;
+
+        // Raw JSON
+        rawJson.textContent = JSON.stringify(data.raw_data, null, 2);
+
+        // Show the webhook card
+        webhookCard.classList.add('show');
+      }
+
+      // Event listeners
+      document.getElementById('simulateButton').addEventListener('click', simulateWebhook);
+      document.getElementById('refreshButton').addEventListener('click', fetchLatestWebhook);
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', () => {
+        checkApiStatus();
+        fetchLatestWebhook();
+      });
+    </script>
+  </body>
+</html>
